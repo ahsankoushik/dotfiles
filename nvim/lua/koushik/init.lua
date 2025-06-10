@@ -1,0 +1,7 @@
+require("koushik.lazy")
+require("koushik.color")
+require("koushik.set")
+require("koushik.remap")
+require("koushik.treesittter")
+require("koushik.lsp_config")
+require("koushik.undotree")
