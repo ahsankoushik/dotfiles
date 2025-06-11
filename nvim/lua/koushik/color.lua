@@ -1,4 +1,4 @@
-vim.cmd.colorscheme "rose-pine"
+vim.cmd.colorscheme "catppuccin"
 
 
 require("themery").setup({
