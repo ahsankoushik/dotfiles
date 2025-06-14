@@ -74,7 +74,7 @@ local servers = {
   "tailwindcss",
   "ts_ls",
   "rust_analyzer",
-  "eslint"
+  "eslint",
   -- Add more here
 }
 for _, server_name in ipairs(servers) do
@@ -100,6 +100,7 @@ lspconfig["svelte"].setup({
    end,
 })
 
+vim.lsp.enable("vue_ls")
 
 local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 for type, icon in pairs(signs) do
