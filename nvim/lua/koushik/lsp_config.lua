@@ -72,7 +72,7 @@ local servers = {
   "prismals",
   "pyright",
   "tailwindcss",
-  "ts_ls",
+  -- "ts_ls", // using volar 
   "rust_analyzer",
   -- Add more here
 }
@@ -96,7 +96,27 @@ lspconfig["svelte"].setup({
   end,
 })
 
-vim.lsp.enable("vue_ls")
+
+lspconfig.volar.setup({
+  capabilities = capabilities,
+  filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+  init_options = {
+    vue = {
+      hybridMode = false, -- set to false to fully enable take-over mode
+    },
+    typescript = {
+      tsdk = vim.fn.stdpath("data") .. "/mason/packages/typescript-language-server/node_modules/typescript/lib",
+      -- This is the key addition:
+      plugins = {
+        {
+          name = "@vue/typescript-plugin",
+          location = vim.fn.stdpath("data") .. "/mason/packages/@vue/typescript-plugin/node_modules/@vue/typescript-plugin",
+          languages = { "javascript", "typescript", "vue" },
+        },
+      },
+    },
+  },
+})
 
 local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 for type, icon in pairs(signs) do
