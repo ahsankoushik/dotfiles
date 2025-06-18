@@ -74,7 +74,6 @@ local servers = {
   "tailwindcss",
   "ts_ls",
   "rust_analyzer",
-  "eslint",
   -- Add more here
 }
 for _, server_name in ipairs(servers) do
@@ -94,10 +93,7 @@ lspconfig["svelte"].setup({
                 })
             end,
         })       -- Custom user command
-        vim.api.nvim_buf_create_user_command(bufnr, "LspKoushik", function()
-            print("Lord Koushik")
-        end, { desc = "Just do Koushik stuff" })
-   end,
+  end,
 })
 
 vim.lsp.enable("vue_ls")
