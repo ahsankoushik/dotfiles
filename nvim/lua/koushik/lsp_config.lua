@@ -60,26 +60,29 @@ vim.api.nvim_create_autocmd("LspAttach", {
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- List of servers
 local servers = {
-  "clangd",
-  "cssls",
-  "docker_compose_language_service",
-  "dockerls",
-  "emmet_language_server",
-  "emmet_ls",
-  "gopls",
-  "html",
-  "lua_ls",
-  "prismals",
-  "pyright",
-  "tailwindcss",
-  -- "ts_ls", // using volar 
-  "rust_analyzer",
-  -- Add more here
+    "clangd",
+    "cssls",
+    "docker_compose_language_service",
+    "dockerls",
+    "emmet_language_server",
+    -- "emmet_ls",
+    "gopls",
+    "html",
+    "lua_ls",
+    "prismals",
+    "pyright",
+    "tailwindcss",
+    -- "ts_ls", // using volar
+    "rust_analyzer",
+    "grammarly",
+    "markdown_oxide",
+    "nginx_language_server",
+    -- Add more here
 }
 for _, server_name in ipairs(servers) do
-  lspconfig[server_name].setup({
-    capabilities = capabilities,
-  })
+    lspconfig[server_name].setup({
+        capabilities = capabilities,
+    })
 end
 lspconfig["svelte"].setup({
     capabilities = capabilities,
@@ -92,57 +95,57 @@ lspconfig["svelte"].setup({
                     uri = vim.uri_from_fname(ctx.match)
                 })
             end,
-        })       -- Custom user command
-  end,
+        }) -- Custom user command
+    end,
 })
 
 
 lspconfig.volar.setup({
-  capabilities = capabilities,
-  filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
-  init_options = {
-    vue = {
-      hybridMode = false, -- set to false to fully enable take-over mode
-    },
-    typescript = {
-      tsdk = vim.fn.stdpath("data") .. "/mason/packages/typescript-language-server/node_modules/typescript/lib",
-      -- This is the key addition:
-      plugins = {
-        {
-          name = "@vue/typescript-plugin",
-          location = vim.fn.stdpath("data") .. "/mason/packages/@vue/typescript-plugin/node_modules/@vue/typescript-plugin",
-          languages = { "javascript", "typescript", "vue" },
+    capabilities = capabilities,
+    filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+    init_options = {
+        vue = {
+            hybridMode = false, -- set to false to fully enable take-over mode
         },
-      },
+        typescript = {
+            tsdk = vim.fn.stdpath("data") .. "/mason/packages/typescript-language-server/node_modules/typescript/lib",
+            -- This is the key addition:
+            plugins = {
+                {
+                    name = "@vue/typescript-plugin",
+                    location = vim.fn.stdpath("data") ..
+                    "/mason/packages/@vue/typescript-plugin/node_modules/@vue/typescript-plugin",
+                    languages = { "javascript", "typescript", "vue" },
+                },
+            },
+        },
     },
-  },
 })
 
 local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
 
 -- Change the Diagnostic symbols in the sign column (gutter)
 -- (not in youtube nvim video)
 vim.diagnostic.config({
-  virtual_text = {
-    prefix = function(diagnostic)
-      local icons = {
-        Error = " ",
-        Warn  = " ",
-        Hint  = "󰠠 ",
-        Info  = " ",
-      }
-      return icons[vim.diagnostic.severity[diagnostic.severity]]
-    end,
-    spacing = 4,
-  },
-  signs = true,
-  underline = true,
-  update_in_insert = true,
-  severity_sort = true,
+    virtual_text = {
+        prefix = function(diagnostic)
+            local icons = {
+                Error = " ",
+                Warn  = " ",
+                Hint  = "󰠠 ",
+                Info  = " ",
+            }
+            return icons[vim.diagnostic.severity[diagnostic.severity]]
+        end,
+        spacing = 4,
+    },
+    signs = true,
+    underline = true,
+    update_in_insert = true,
+    severity_sort = true,
 })
-
