@@ -65,7 +65,7 @@ local servers = {
     "docker_compose_language_service",
     "dockerls",
     "emmet_language_server",
-    -- "emmet_ls",
+    "emmet_ls",
     "gopls",
     "html",
     "lua_ls",
