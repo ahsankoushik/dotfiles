@@ -4,6 +4,7 @@ local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tag' })
 vim.keymap.set('n', '<leader>fd', function()
     builtin.find_files({ hidden = true})
 end, { desc = "Telescope find hidden files too"})
@@ -41,7 +42,7 @@ vim.keymap.set("n", "<leader>gt", vim.cmd.Git, { desc = "Git Explorer" })
 -- themery 
 vim.keymap.set("n", "<leader>th", "<cmd>Themery<CR>", { desc = "Themery"})
 
-
+vim.g.copilot_enabled = false
 vim.g.copilot_no_tab_map = true
 vim.api.nvim_set_keymap("i", "<C-j>", 'copilot#Accept("<CR>")', {
   silent = true,
