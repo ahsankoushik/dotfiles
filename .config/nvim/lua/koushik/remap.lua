@@ -40,3 +40,11 @@ vim.keymap.set("n", "<leader>gt", vim.cmd.Git, { desc = "Git Explorer" })
 
 -- themery 
 vim.keymap.set("n", "<leader>th", "<cmd>Themery<CR>", { desc = "Themery"})
+
+
+vim.g.copilot_no_tab_map = true
+vim.api.nvim_set_keymap("i", "<C-j>", 'copilot#Accept("<CR>")', {
+  silent = true,
+  expr = true,
+  script = true,
+})
