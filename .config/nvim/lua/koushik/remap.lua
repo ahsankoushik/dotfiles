@@ -49,3 +49,10 @@ vim.api.nvim_set_keymap("i", "<C-j>", 'copilot#Accept("<CR>")', {
   expr = true,
   script = true,
 })
+
+
+-- Resize splits with Shift + H/L/J/K
+vim.keymap.set('n', '<S-H>', ':vertical resize -10<CR>')
+vim.keymap.set('n', '<S-L>', ':vertical resize +10<CR>')
+vim.keymap.set('n', '<S-J>', ':resize +10<CR>')
+vim.keymap.set('n', '<S-K>', ':resize -10<CR>')
