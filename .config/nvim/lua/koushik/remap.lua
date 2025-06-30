@@ -31,8 +31,8 @@ vim.keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close Split Screen
 
 -- tabs 
 vim.keymap.set("n", "<leader>tn", vim.cmd.tabnew, { desc = "New tab"})
-vim.keymap.set("n", "<Tab>", vim.cmd.tabn, { desc = "tab next"})
-vim.keymap.set("n", "<S-Tab>", vim.cmd.tabp, { desc = "tab previous"})
+vim.keymap.set("n", "<leader>tl", vim.cmd.tabn, { desc = "tab next"})
+vim.keymap.set("n", "<leader>th", vim.cmd.tabp, { desc = "tab previous"})
 vim.keymap.set("n", "<leader>tx", vim.cmd.tabclose, { desc = "tab close"})
 
 
@@ -40,7 +40,7 @@ vim.keymap.set("n", "<leader>tx", vim.cmd.tabclose, { desc = "tab close"})
 vim.keymap.set("n", "<leader>gt", vim.cmd.Git, { desc = "Git Explorer" })
 
 -- themery 
-vim.keymap.set("n", "<leader>th", "<cmd>Themery<CR>", { desc = "Themery"})
+vim.keymap.set("n", "<leader>tm", "<cmd>Themery<CR>", { desc = "Themery"})
 
 vim.g.copilot_enabled = false
 vim.g.copilot_no_tab_map = true
