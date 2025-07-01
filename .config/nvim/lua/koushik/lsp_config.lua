@@ -77,6 +77,7 @@ local servers = {
     "grammarly",
     "markdown_oxide",
     "nginx_language_server",
+    "jdtls",
     -- Add more here
 }
 for _, server_name in ipairs(servers) do
