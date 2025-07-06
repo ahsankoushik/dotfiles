@@ -78,7 +78,7 @@ local servers = {
     "markdown_oxide",
     "nginx_language_server",
     "jdtls",
-    -- Add more here
+    "lemminx",
 }
 for _, server_name in ipairs(servers) do
     lspconfig[server_name].setup({
