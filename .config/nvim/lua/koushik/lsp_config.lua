@@ -46,7 +46,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
 
         opts.desc = "Show documentation for what is under cursor"
-        keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+        keymap.set("n", "F", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
         opts.desc = "Restart LSP"
         keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
@@ -85,6 +85,10 @@ for _, server_name in ipairs(servers) do
         capabilities = capabilities,
     })
 end
+vim.lsp.config('*', {
+    capabilities = capabilities
+})
+vim.lsp.enable('kotlin_lsp')
 lspconfig["svelte"].setup({
     capabilities = capabilities,
     on_attach = function(client, bufnr)
@@ -115,7 +119,7 @@ lspconfig.volar.setup({
                 {
                     name = "@vue/typescript-plugin",
                     location = vim.fn.stdpath("data") ..
-                    "/mason/packages/@vue/typescript-plugin/node_modules/@vue/typescript-plugin",
+                        "/mason/packages/@vue/typescript-plugin/node_modules/@vue/typescript-plugin",
                     languages = { "javascript", "typescript", "vue" },
                 },
             },
