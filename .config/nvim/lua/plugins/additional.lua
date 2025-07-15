@@ -13,7 +13,6 @@ return {
         }
     },
     { "mg979/vim-visual-multi" },
-    { "tpope/vim-fugitive" },
     { "lewis6991/gitsigns.nvim" },
     {
         'nvim-lualine/lualine.nvim',

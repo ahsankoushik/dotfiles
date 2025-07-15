@@ -37,7 +37,7 @@ vim.keymap.set("n", "<leader>tx", vim.cmd.tabclose, { desc = "tab close"})
 
 
 -- git
-vim.keymap.set("n", "<leader>gt", vim.cmd.Git, { desc = "Git Explorer" })
+vim.keymap.set("n", "<leader>gt", "<cmd>LazyGit<cr>", { desc = "Git Explorer" })
 
 -- themery 
 vim.keymap.set("n", "<leader>tm", "<cmd>Themery<CR>", { desc = "Themery"})
