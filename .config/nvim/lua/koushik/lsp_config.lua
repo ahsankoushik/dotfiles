@@ -56,6 +56,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
+-- for function help
+require("lsp_signature").setup({
+    bind = true,
+    floating_window = true,
+    hint_enable = true,
+    handler_opts = {
+        border = "rounded"
+    }
+})
+
 -- 👇 Add this line before setting up LSP servers
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- List of servers
