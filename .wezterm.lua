@@ -5,7 +5,10 @@ local home = os.getenv("HOME")
 local config = wezterm.config_builder()
 
 
-config.font = wezterm.font("0xProto Nerd Font")
+config.font = wezterm.font_with_fallback{
+    "0xProto Nerd Font",
+    "Noto Sans Bengali"
+}
 
 
 config.font_size = 13
