@@ -82,7 +82,7 @@ local servers = {
     "prismals",
     "pyright",
     "tailwindcss",
-    -- "ts_ls", // using volar
+    -- "ts_ls", -- using volar
     "rust_analyzer",
     "grammarly",
     "markdown_oxide",
