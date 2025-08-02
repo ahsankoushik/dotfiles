@@ -98,7 +98,9 @@ end
 vim.lsp.config('*', {
     capabilities = capabilities
 })
-vim.lsp.enable('kotlin_lsp')
+-- vim.lsp.enable('kotlin_lsp')
+vim.lsp.enable('dartls')
+
 lspconfig["svelte"].setup({
     capabilities = capabilities,
     on_attach = function(client, bufnr)
