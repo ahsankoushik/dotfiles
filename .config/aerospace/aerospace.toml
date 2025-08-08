@@ -209,6 +209,7 @@ automatically-unhide-macos-hidden-apps = false
 B = 2
 P = 2 
 T = 2
+N = 2
 
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
@@ -219,6 +220,13 @@ run = 'move-node-to-workspace B'
 if.app-id = 'com.github.wez.wezterm'
 run = 'move-node-to-workspace 1'
 
+[[on-window-detected]]
+if.app-id = 'net.quochuywdm.collanote496'
+run = 'move-node-to-workspace N'
 
+
+[[on-window-detected]]
+if.app-id = 'com.postmanlabs.mac'
+run = 'move-node-to-workspace P'
 
 

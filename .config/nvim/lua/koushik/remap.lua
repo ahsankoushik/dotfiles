@@ -34,6 +34,8 @@ vim.keymap.set("n", "<leader>tn", vim.cmd.tabnew, { desc = "New tab" })
 vim.keymap.set("n", "<leader>tl", vim.cmd.tabn, { desc = "tab next" })
 vim.keymap.set("n", "<leader>th", vim.cmd.tabp, { desc = "tab previous" })
 vim.keymap.set("n", "<leader>tx", vim.cmd.tabclose, { desc = "tab close" })
+vim.keymap.set("n", "<leader>ts", vim.cmd.tabfirst, { desc = "tab close" })
+vim.keymap.set("n", "<leader>te", vim.cmd.tablast, { desc = "tab close" })
 
 
 -- git
