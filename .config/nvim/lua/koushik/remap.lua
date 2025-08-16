@@ -44,14 +44,6 @@ vim.keymap.set("n", "<leader>gt", "<cmd>LazyGit<cr>", { desc = "Git Explorer" })
 -- themery
 vim.keymap.set("n", "<leader>tm", "<cmd>Themery<CR>", { desc = "Themery" })
 
-vim.g.copilot_enabled = false
-vim.g.copilot_no_tab_map = true
-vim.api.nvim_set_keymap("i", "<C-j>", 'copilot#Accept("<CR>")', {
-    silent = true,
-    expr = true,
-    script = true,
-})
-
 
 -- Resize splits with Shift + H/L/J/K
 vim.keymap.set('n', '<S-H>', ':vertical resize -10<CR>')
