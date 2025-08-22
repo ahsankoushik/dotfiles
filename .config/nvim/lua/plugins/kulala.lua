@@ -1,4 +1,4 @@
--- return {
+return {
 --     "mistweaverco/kulala.nvim",
 --     ft = { "http", "rest" },
--- }
+}

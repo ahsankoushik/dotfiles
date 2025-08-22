@@ -52,7 +52,7 @@ vim.keymap.set('n', '<S-J>', ':resize -10<CR>')
 vim.keymap.set('n', '<S-K>', ':resize +10<CR>')
 
 -- kulala config
-local kula_la = require("kulala")
-vim.keymap.set("n", "<leader>Rs", kula_la.run , {desc = "kulala send"})
-vim.keymap.set("n", "<leader>Ra", kula_la.run_all , {desc = "kulala send all"})
-vim.keymap.set("n", "<leader>Rr", kula_la.replay , {desc = "kulala reply last request"})
+-- local kula_la = require("kulala")
+-- vim.keymap.set("n", "<leader>Rs", kula_la.run , {desc = "kulala send"})
+-- vim.keymap.set("n", "<leader>Ra", kula_la.run_all , {desc = "kulala send all"})
+-- vim.keymap.set("n", "<leader>Rr", kula_la.replay , {desc = "kulala reply last request"})
