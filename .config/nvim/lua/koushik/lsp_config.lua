@@ -103,6 +103,7 @@ vim.lsp.config('*', {
 })
 -- vim.lsp.enable('kotlin_lsp')
 vim.lsp.enable('dartls')
+-- vim.lsp.enable('vue_ls')
 
 lspconfig["svelte"].setup({
     capabilities = capabilities,
@@ -120,27 +121,27 @@ lspconfig["svelte"].setup({
 })
 
 
-lspconfig.volar.setup({
-    capabilities = capabilities,
-    filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
-    init_options = {
-        vue = {
-            hybridMode = false, -- set to false to fully enable take-over mode
-        },
-        typescript = {
-            tsdk = vim.fn.stdpath("data") .. "/mason/packages/typescript-language-server/node_modules/typescript/lib",
-            -- This is the key addition:
-            plugins = {
-                {
-                    name = "@vue/typescript-plugin",
-                    location = vim.fn.stdpath("data") ..
-                        "/mason/packages/@vue/typescript-plugin/node_modules/@vue/typescript-plugin",
-                    languages = { "javascript", "typescript", "vue" },
-                },
-            },
-        },
-    },
-})
+-- lspconfig.volar.setup({
+--     capabilities = capabilities,
+--     filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+--     init_options = {
+--         vue = {
+--             hybridMode = false, -- set to false to fully enable take-over mode
+--         },
+--         typescript = {
+--             tsdk = vim.fn.stdpath("data") .. "/mason/packages/typescript-language-server/node_modules/typescript/lib",
+--             -- This is the key addition:
+--             plugins = {
+--                 {
+--                     name = "@vue/typescript-plugin",
+--                     location = vim.fn.stdpath("data") ..
+--                         "/mason/packages/@vue/typescript-plugin/node_modules/@vue/typescript-plugin",
+--                     languages = { "javascript", "typescript", "vue" },
+--                 },
+--             },
+--         },
+--     },
+-- })
 
 local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 for type, icon in pairs(signs) do
