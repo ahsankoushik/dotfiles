@@ -37,4 +37,4 @@ end
 
 vim.api.nvim_create_user_command("Tabs2", function() SetTabsTo2() end, {})
 vim.api.nvim_create_user_command("Tabs4", function() SetTabsTo4() end, {})
-
+SetTabsTo4()
