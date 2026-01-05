@@ -93,25 +93,80 @@ local servers = {
     "lemminx",
 }
 
-for _, server in ipairs(servers) do
-    vim.lsp.enable(server)
+for _, server_name in ipairs(servers) do
+    lspconfig[server_name].setup({
+        capabilities = capabilities,
+    })
+end
+vim.lsp.config('*', {
+    capabilities = capabilities
+})
+vim.lsp.enable('kotlin_lsp')
+vim.lsp.enable('dartls')
+vim.lsp.enable('svelte')
+--
+-- lspconfig["svelte"].setup({
+--     capabilities = capabilities,
+--     on_attach = function(client, bufnr)
+--         -- Notify change on JS/TS file write
+--         vim.api.nvim_create_autocmd("BufWritePost", {
+--             pattern = { "*.js", "*.ts" },
+--             callback = function(ctx)
+--                 client.notify("$/onDidChangeTsOrJsFile", {
+--                     uri = vim.uri_from_fname(ctx.match)
+--                 })
+--             end,
+--         }) -- Custom user command
+--     end,
+-- })
+--
+
+-- lspconfig.volar.setup({
+--     capabilities = capabilities,
+--     filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+--     init_options = {
+--         vue = {
+--             hybridMode = false, -- set to false to fully enable take-over mode
+--         },
+--         typescript = {
+--             tsdk = vim.fn.stdpath("data") .. "/mason/packages/typescript-language-server/node_modules/typescript/lib",
+--             -- This is the key addition:
+--             plugins = {
+--                 {
+--                     name = "@vue/typescript-plugin",
+--                     location = vim.fn.stdpath("data") ..
+--                         "/mason/packages/@vue/typescript-plugin/node_modules/@vue/typescript-plugin",
+--                     languages = { "javascript", "typescript", "vue" },
+--                 },
+--             },
+--         },
+--     },
+-- })
+
+local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
--- Extra config for dart
-vim.lsp.enable("dartls")
 
--- Custom config example for Svelte
-vim.lsp.config("svelte", {
-    capabilities = capabilities,
-    on_attach = function(client)
-        vim.api.nvim_create_autocmd("BufWritePost", {
-            pattern = { "*.js", "*.ts" },
-            callback = function(ctx)
-                client.notify("$/onDidChangeTsOrJsFile", {
-                    uri = vim.uri_from_fname(ctx.match),
-                })
-            end,
-        })
-    end,
+-- Change the Diagnostic symbols in the sign column (gutter)
+-- (not in youtube nvim video)
+vim.diagnostic.config({
+    virtual_text = {
+        prefix = function(diagnostic)
+            local icons = {
+                Error = " ",
+                Warn  = " ",
+                Hint  = "󰠠 ",
+                Info  = " ",
+            }
+            return icons[vim.diagnostic.severity[diagnostic.severity]]
+        end,
+        spacing = 4,
+    },
+    signs = true,
+    underline = true,
+    update_in_insert = true,
+    severity_sort = true,
 })
-
