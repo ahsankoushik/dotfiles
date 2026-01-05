@@ -93,11 +93,10 @@ local servers = {
     "lemminx",
 }
 
-for _, server_name in ipairs(servers) do
-    lspconfig[server_name].setup({
-        capabilities = capabilities,
-    })
+for _, server in ipairs(servers) do
+    vim.lsp.enable(server)
 end
+
 vim.lsp.config('*', {
     capabilities = capabilities
 })
