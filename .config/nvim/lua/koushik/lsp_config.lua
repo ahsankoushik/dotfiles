@@ -1,4 +1,3 @@
-
 -- Mason setup
 require("mason").setup()
 
@@ -91,6 +90,7 @@ local servers = {
     "nginx_language_server",
     "jdtls",
     "lemminx",
+    "terraformls"
 }
 
 for _, server in ipairs(servers) do
@@ -103,6 +103,9 @@ vim.lsp.config('*', {
 vim.lsp.enable('kotlin_lsp')
 vim.lsp.enable('dartls')
 vim.lsp.enable('svelte')
+
+
+
 --
 -- lspconfig["svelte"].setup({
 --     capabilities = capabilities,
@@ -148,24 +151,10 @@ for type, icon in pairs(signs) do
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
-
--- Change the Diagnostic symbols in the sign column (gutter)
--- (not in youtube nvim video)
-vim.diagnostic.config({
-    virtual_text = {
-        prefix = function(diagnostic)
-            local icons = {
-                Error = " ",
-                Warn  = " ",
-                Hint  = "󰠠 ",
-                Info  = " ",
-            }
-            return icons[vim.diagnostic.severity[diagnostic.severity]]
-        end,
-        spacing = 4,
-    },
-    signs = true,
-    underline = true,
-    update_in_insert = true,
-    severity_sort = true,
+-- for formating the doucments before saving
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+    pattern = { "*.tf", "*.tfvars", "*.go", "*.dart" },
+    callback = function()
+        vim.lsp.buf.format()
+    end,
 })
