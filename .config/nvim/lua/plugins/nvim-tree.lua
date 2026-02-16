@@ -12,7 +12,7 @@ return {
             -- hijack_netrw = false,
             -- disable_netrw = false,
             view = {
-                width = 40,
+                width = 50,
                 relativenumber = true,
             },
             -- change folder arrow icons
