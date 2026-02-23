@@ -1,3 +1,4 @@
 .DS_Store
 .config/nvim/lua/lazy-lock.json
 .config/nvim/lazy-lock.json
+.config/nvim/lazy-lock.json
