@@ -103,6 +103,7 @@ vim.lsp.config('*', {
 vim.lsp.enable('kotlin_lsp')
 vim.lsp.enable('dartls')
 vim.lsp.enable('svelte')
+vim.lsp.enable("sourcekit")
 
 
 
