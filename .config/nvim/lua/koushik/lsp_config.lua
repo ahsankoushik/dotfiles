@@ -1,6 +1,31 @@
 -- Mason setup
 require("mason").setup()
 
+-- Auto-install the LSP servers we rely on, so a fresh machine just works.
+-- `automatic_enable = false` because servers are enabled explicitly below
+-- via `vim.lsp.enable(...)`.
+-- Note: `dartls` isn't in the Mason registry (it ships with the Dart/Flutter
+-- SDK), so it can't be auto-installed here and stays manually enabled below.
+require("mason-lspconfig").setup({
+    ensure_installed = {
+        "ts_ls",
+        "vtsls",
+        "pyright",
+        "gopls",
+        "dockerls",
+        "docker_compose_language_service",
+        "cssls",
+        "tailwindcss",
+        "html",
+        "emmet_ls",
+        "emmet_language_server",
+        "nginx_language_server",
+        "markdown_oxide",
+        "svelte",
+    },
+    automatic_enable = false,
+})
+
 -- LSP capabilities from nvim-cmp
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -105,46 +130,6 @@ vim.lsp.enable('dartls')
 vim.lsp.enable('svelte')
 vim.lsp.enable("sourcekit")
 
-
-
---
--- lspconfig["svelte"].setup({
---     capabilities = capabilities,
---     on_attach = function(client, bufnr)
---         -- Notify change on JS/TS file write
---         vim.api.nvim_create_autocmd("BufWritePost", {
---             pattern = { "*.js", "*.ts" },
---             callback = function(ctx)
---                 client.notify("$/onDidChangeTsOrJsFile", {
---                     uri = vim.uri_from_fname(ctx.match)
---                 })
---             end,
---         }) -- Custom user command
---     end,
--- })
---
-
--- lspconfig.volar.setup({
---     capabilities = capabilities,
---     filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
---     init_options = {
---         vue = {
---             hybridMode = false, -- set to false to fully enable take-over mode
---         },
---         typescript = {
---             tsdk = vim.fn.stdpath("data") .. "/mason/packages/typescript-language-server/node_modules/typescript/lib",
---             -- This is the key addition:
---             plugins = {
---                 {
---                     name = "@vue/typescript-plugin",
---                     location = vim.fn.stdpath("data") ..
---                         "/mason/packages/@vue/typescript-plugin/node_modules/@vue/typescript-plugin",
---                     languages = { "javascript", "typescript", "vue" },
---                 },
---             },
---         },
---     },
--- })
 
 local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 for type, icon in pairs(signs) do
